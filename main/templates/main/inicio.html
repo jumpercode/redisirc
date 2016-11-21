@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link rel ="stylesheet" href="{% static 'css/estilo.css' %}">
+</head>
+<body class="inicio">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Coiny');
+        h1{
+            font-family: 'Coiny', cursive;
+            color: white;
+            font-size: 50px;
+        }
+        .centro{
+            overflow: hidden;
+            position: absolute;
+            height: 530px;
+            width: 530px;
+            left: 50%;
+            top: 50%;
+            margin-top: -200px;
+            margin-left: -260px;
+        }
+        button{
+            border: 1px solid #66A2DE;
+            font-size: 18px;
+            font-family: Arial, Verdana;
+            padding-left: 7px;
+            padding-right: 7px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            -o-border-radius: 4px;
+            background: white;
+            background: linear-gradient(left, #3A8BDC, #1D66AF );
+            background: -moz-linear-gradient(left, #3A8BDC, #1D66AF );
+            background: -webkit-linear-gradient(left, #3A8BDC, #1D66AF );
+            background: -o-linear-gradient(left, #3A8BDC, #1D66AF );
+            color: #FFFFFF;
+         }
+        button:hover{
+            background: #365D9D;
+            background: linear-gradient(left, #365D9D, #436CAD);
+            background: -moz-linear-gradient(left, #365D9D, #436CAD);
+            background: -webkit-linear-gradient(left, #365D9D, #436CAD);
+            background: -o-linear-gradient(left, #365D9D, #436CAD);
+            color: #FFFFFF;
+            border-color: #FBFFAD;
+        }
+    </style>
+    <div class="centro">
+        <center>
+            <h1>Bienvenidos a Nuestro Chat Redis
+            </h1>
+            <a href="{% url 'login' %}"><button>ENTRAR</button></a>
+            <br>
+            <br>
+            <a href="{% url 'register' %}"><button>Registrate</button></a>
+            <a href="{% url 'add-salas' %}"><button>Registrar Salas</button></a>
+        </center>
+    </div>
+</body>
+</html>

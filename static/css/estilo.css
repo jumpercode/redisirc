@@ -1,0 +1,51 @@
+*{
+  margin: 0 ;
+}
+
+/*fondo de inicio*/
+.inicio{
+  background: url(../img/ini.jpg) repeat;
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  background-repeat: no-repeat;
+  background-size: 1365px 750px;
+  text-align: left;
+  text-decoration: none;
+}
+
+/*cuerpo*/
+.sectionc{
+  width: 750px;
+  border: 1px;
+  margin: 0 auto;
+  height: 450px;
+
+}
+.sectionc p{
+  text-align: center;
+  color: #2574C4;
+}
+.caption{
+  text-align: center;
+}
+
+/*login*/
+.tituloUser{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: white;
+}
+.navbar .navbar-brand{
+  color: #2574C4;
+}
+.navbar .navbar-brand:hover{
+  color: #2574C4;
+}
+.navbar{
+  background: white;
+  background-color: white;
+  border:1px solid #ffffff;
+}
+.salir{
+  color: white;
+}

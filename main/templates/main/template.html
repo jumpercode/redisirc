@@ -1,0 +1,91 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chat-IRC</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/AdminLTE.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'dist/css/skins/_all-skins.min.css' %}">
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini" style="
+    margin-top:  0;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+" >
+<div class="wrapper">
+  <header class="main-header">
+    <a href="{% url 'list-sala' %}" class="logo">
+      <span class="logo-mini"><b>C</b>R</span>
+      <span class="logo-lg"><b>Chat</b>Redis</span>
+    </a>
+    <nav class="navbar">
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only"></span>
+      </a>
+      <a href="{% url 'logout' %}" class="logo pull-right ">
+      <span>Salir</span>
+    </a>
+    </nav>
+    
+  </header>
+
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="{% static 'img/user2-160x160.jpg' %}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{ nick }}</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <br />
+        </div>
+      </div>
+      <br />
+      <ul class="sidebar-menu">
+        <li>
+          <a href="{% url 'Cambiar_sala' %}">
+            <i class="fa fa-retweet"></i> <span>Cambiar Sala</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'list-sala' %}">
+            <i class="fa fa-users"></i> <span>Chat</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green-active"></small>
+            </span>
+          </a>
+        </li>
+       </ul>
+    </section>
+   </aside>
+<div class="content-wrapper">
+{%  block content %}
+{% endblock %}
+</div>
+
+<script src="{% static 'jquery.js' %}"></script>
+<script src="{% static 'var.js' %}"></script>
+
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'dist/js/demo.js' %}"></script>
+
+{% block javascript %}
+
+{% endblock %}
+</div>
+</body>
+</html>

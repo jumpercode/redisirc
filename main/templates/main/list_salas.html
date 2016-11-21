@@ -1,0 +1,91 @@
+{% extends 'main/template.html' %} 
+
+{% block content %}
+    <div class="row">
+     <div class="col-xs-12 .col-sm-12 .col-md-12 col-lg-12">
+      <ol class="breadcrumb" style="margin-top: 20px; padding-top: 5px; ">
+        <li><a  href="/home"><i style="margin-right: 5px" class="fa fa-globe"></i><C>CHAT-</C>REDIS</a></li>
+      </ol>
+     </div>
+    </div>
+
+    <div style="margin-left: 40px; margin-right: 40px" class="row">
+    <div class="col-xs-12 .col-sm-12 .col-md-12 col-lg-12">
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <i class="fa fa-comments"></i><h3 style="margin-left: 10px" class="box-title">CHAT</h3>
+        </div>
+        <div class="box-body" style="padding-left: 10%; padding-right: 10%;">
+            <div class="form-group">
+                <textarea id="pantalla" class="form-control" style="align-content:center; height: 200px; max-height: 200px; min-width:100%; max-width: 100%" readonly="readonly"></textarea>
+            </div>
+            <div class="input-group">
+                <div class="input-group-btn">
+                   <input name="mensaje" id="mensaje" type="text" class="form-control" placeholder="Escriba su mensaje y pulse ENTER para enviarlo!." />
+           		</div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block javascript %}
+	<script type="text/javascript">
+
+		var mcont = 0;
+		var lock = false;
+
+		$('#mensaje').bind('keypress', function(e) 
+		{
+			if(e.keyCode == 13)
+				sentMensaje();
+		});
+
+		function sentMensaje()
+		{
+			ob = {'mensaje': $("#mensaje").val(), 'nick': '{{ nick }}', 'sala':'{{ sala }}'};
+			ajaxEnviar("/enviarM", ob, readMensaje);
+			$("#mensaje").val("");
+			$("#mensaje").focus();
+		}
+
+		function readMensaje(obj)
+		{
+			//console.log(obj.status);
+		}
+
+		function recMensaje()
+		{
+			if(!lock)
+			{
+				ob = {'sala':'{{ sala }}', 'mcont': mcont};
+				ajaxEnviar("/recibirM", ob, doMsg);
+				lock = true;
+			}
+
+		}
+
+		function doMsg(obj)
+		{
+			if(obj.status.substring(0, 4) == 'News')
+			{
+				mcont = parseInt(obj.mcont);
+
+				for (var i = 0; i < obj.lista.length; i++)
+				{
+					$("#pantalla").val($("#pantalla").val()+obj.lista[i].nick+": "+obj.lista[i].msg+"\n");
+				}
+
+			}
+
+			 $('#pantalla').scrollTop($('#pantalla')[0].scrollHeight);
+
+			lock = false;
+		}
+
+		setInterval(recMensaje, 250);
+		
+	</script>
+
+{% endblock %}
